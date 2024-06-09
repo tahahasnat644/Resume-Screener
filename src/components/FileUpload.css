@@ -1,0 +1,56 @@
+/* FileUpload.css */
+.file-upload-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.dropzone {
+    border: 2px dashed #007bff;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.dropzone.active {
+    background-color: #e0e0e0;
+}
+
+.file-input-container {
+    margin: 20px 0;
+}
+
+.file-input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.upload-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.upload-button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 5px;
+}
+
+li {
+    background: #f8f9fa00;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #dddddd00;
+    border-radius: 4px;
+}

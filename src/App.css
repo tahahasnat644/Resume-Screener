@@ -1,0 +1,24 @@
+/* App.css */
+.html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background: url('/home/taha644/Documents/React Apps/resume/src/image.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.App-header {
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
