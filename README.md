@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+### Project Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Resume Screener Application**
 
-## Available Scripts
+#### Objective
+To create an application enabling users to upload resume PDF files, process these files to extract relevant information, and categorize each resume into predefined categories using a machine learning model.
 
-In the project directory, you can run:
+#### Components
 
-### `npm start`
+1. **Frontend:**
+   - **Technology:** React
+   - **File:** `FileUpload.js`
+   - **Description:**
+     - Provides a user interface for uploading resume files.
+     - Uses `react-dropzone` for a drag-and-drop file upload area.
+     - Users can drag and drop or select PDF files, which are then displayed.
+     - An upload button sends the selected files to the backend server.
+     - Displays categorization results in a table format after uploading.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Backend:**
+   - **Technology:** Flask
+   - **File:** `app.py`
+   - **Description:**
+     - Handles file uploads and processing.
+     - Saves uploaded files to an upload directory.
+     - Extracts text from PDFs using `PyPDF2`.
+     - Cleans and preprocesses the text to isolate qualifications and experiences.
+     - Uses a pre-trained machine learning model (saved as `pipeline.joblib`) to predict resume categories.
+     - Moves categorized resumes to corresponding directories.
+     - Sends categorization results back to the frontend in JSON format.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Workflow
 
-### `npm test`
+1. **User Interaction:**
+   - Users visit the web interface, drag-and-drop or select resume PDF files.
+   - Click the "Upload Files" button to initiate the upload process.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **File Handling and Processing:**
+   - The frontend sends selected files to the backend server via a POST request.
+   - The backend saves the files, extracts, and cleans the text content.
+   - The machine learning model categorizes each resume based on the processed text.
 
-### `npm run build`
+3. **Result Display:**
+   - The backend returns categorization results to the frontend.
+   - The frontend displays these results in a table showing filenames and their categories.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Key Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Drag-and-Drop File Upload:** An intuitive area for uploading PDF files.
+- **File Validation:** Ensures only PDF files are accepted.
+- **Text Extraction and Cleaning:** Extracts and cleans text from PDF files.
+- **Machine Learning Categorization:** Categorizes resumes using a pre-trained model.
+- **Result Visualization:** Displays categorization results in a user-friendly table.
+- **Categorized File Storage:** Organizes uploaded resumes into categorized directories.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Technologies Used
 
-### `npm run eject`
+- **Frontend:** React, `react-dropzone`, Axios
+- **Backend:** Flask, `PyPDF2`, `scikit-learn`, `joblib`
+- **Other Libraries:** `flask-cors` for CORS, `werkzeug` for secure file handling
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This project provides a seamless experience for uploading and categorizing resumes, leveraging machine learning for intelligent categorization.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Execution Instructions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### Prerequisites
+- Node.js and npm installed
+- Python and pip installed
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Frontend (React)
 
-## Learn More
+1. **Navigate to the frontend directory:**
+   cd path/to/frontend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **Install dependencies:**
+   npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. **Start the React development server:**
+   npm start
 
-### Code Splitting
+#### Backend (Flask)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Navigate to the backend directory:**
+   cd path/to/backend
 
-### Analyzing the Bundle Size
+2. **Create a virtual environment and activate it:**
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. **Install dependencies:**
+   pip install -r requirements.txt
 
-### Making a Progressive Web App
+4. **Ensure the upload folders exist:**
+   mkdir -p uploads categorized_pdfs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+5. **Run the Flask server:**
+   flask run
 
-### Advanced Configuration
+#### Accessing the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. **Open your browser and navigate to:**
+   http://localhost:3000
 
-### Deployment
+2. **Use the interface to upload resume PDF files and view the categorization results.**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ensure both servers are running simultaneously for the application to work correctly. The frontend (React) runs on port 3000, while the backend (Flask) runs on port 5000. Adjust the configurations if necessary.
